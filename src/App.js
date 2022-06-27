@@ -55,12 +55,12 @@ function App() {
   // delete task
 
   const deleteTask = async (id) => {
-   const res = await fetch(`http://localhost:5000/task/${id}`, {
+    const res = await fetch(`http://localhost:5000/task/${id}`, {
       method: "DELETE",
     });
-    res.status=== 200
-      ? setTask(task.filter((task) => task.id !== id)) :
-      alert('error deleting task')
+    res.status === 200
+      ? setTask(task.filter((task) => task.id !== id))
+      : alert("error deleting task");
   };
 
   // ontoggle reminder
@@ -89,24 +89,30 @@ function App() {
           onAdd={() => setShowAddTask(!showAddTask)}
           showAdd={showAddTask}
         />
-      
-        <Route path='/' exact render={(props) => (
-          <div>
+
+        <Route
+          path="/"
+          exact
+          render={(props) => (
+            <div>
               {showAddTask && <AddTask onAdd={addTask} />}
-        {task.length > 0 ? (
-              <Task task={task}
-                onDelete={deleteTask}
-                onToggle={toggleReminder} />
-        ) : (
-          "no task to show"
-        )}
-          </div>
-        )}/>
-        <Route path='/' component={About}/>
+              {task.length > 0 ? (
+                <Task
+                  task={task}
+                  onDelete={deleteTask}
+                  onToggle={toggleReminder}
+                />
+              ) : (
+                "no task to show"
+              )}
+            </div>
+          )}
+        />
+        <Route path="/" component={About} />
         <Footer />
       </div>
     </Router>
-  ); 
+  );
 }
 
 export default App;

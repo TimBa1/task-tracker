@@ -6,8 +6,8 @@ const Header = ({ onAdd, showAdd }) => {
     const location=useLocation()
     return (
         <div className='header'>
-            <h1 className=''> Task Tracker </h1>
-            {location.pathName === '/' && <Button color={showAdd ? 'red' : 'green'} onClick={onAdd} text={showAdd ? 'Close' : 'Add'} />}
+            <h1 className=''>TimBa Task Tracker </h1>
+            {location.pathname === '/' && <Button color={showAdd ? 'red' : 'green'} onClick={onAdd} text={showAdd ? 'Close' : 'Add'} />}
         </div>
     )
 }
